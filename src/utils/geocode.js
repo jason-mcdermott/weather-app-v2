@@ -1,8 +1,9 @@
 let request = require('request')
 const config = require('../config');
+const MAPBOX_ACCESS_TOKEN = process.env.MAPBOX_ACCESS_TOKEN || config.MAPBOX_ACCESS_TOKEN
 
 let geocode = (address, callback) => {
-    let url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(address)}.json?access_token=${config.MAPBOX_ACCESS_TOKEN}&limit=1`
+    let url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(address)}.json?access_token=${MAPBOX_ACCESS_TOKEN}&limit=1`
 
     request({ url, json: true }, (err, { body }) => {
         if(err) { 

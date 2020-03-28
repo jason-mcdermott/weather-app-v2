@@ -1,8 +1,9 @@
 let request = require('request')
 const config = require('../config');
+const DARK_SKY_API_KEY = process.env.DARK_SKY_API_KEY || config.DARK_SKY_API_KEY
 
 let forecast = (latitude, longitude, callback) => {
-    let url = `https://api.darksky.net/forecast/${config.DARK_SKY_API_KEY}/${latitude},${longitude}`
+    let url = `https://api.darksky.net/forecast/${DARK_SKY_API_KEY}/${latitude},${longitude}`
 
     request({ url, json: true }, (err, { body }) => {
         if(err) { 
