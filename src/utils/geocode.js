@@ -1,11 +1,10 @@
 let request = require('request')
-const config = require('../config');
-const MAPBOX_ACCESS_TOKEN = process.env.MAPBOX_ACCESS_TOKEN || config.MAPBOX_ACCESS_TOKEN
-// if(process.env.MAPBOX_ACCESS_TOKEN) {
-//     console.log('using process.env.MAPBOX_ACCESS_TOKEN')
-// } else {
-//     console.log('using config.MAPBOX_ACCESS_TOKEN')
-// }
+const MAPBOX_ACCESS_TOKEN = process.env.MAPBOX_ACCESS_TOKEN || require('../config').MAPBOX_ACCESS_TOKEN
+if(process.env.MAPBOX_ACCESS_TOKEN) {
+    console.log('using process.env.MAPBOX_ACCESS_TOKEN')
+} else {
+    console.log('using config.MAPBOX_ACCESS_TOKEN')
+}
 let geocode = (address, callback) => {
     let url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(address)}.json?access_token=${MAPBOX_ACCESS_TOKEN}&limit=1`
 
