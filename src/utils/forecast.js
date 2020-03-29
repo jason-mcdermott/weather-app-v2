@@ -12,7 +12,15 @@ let forecast = (latitude, longitude, callback) => {
             callback('weather service error: ' + body.error)
         }
         else {
-            callback(undefined, body.daily.data[0].summary)
+            callback(undefined, {
+                currentTemperature: body.currently.temperature,
+                apparentTemperature: body.currently.apparentTemperature,
+                dailySummary: body.daily.data[0].summary,
+                dailyprecipProbability: body.daily.data[0].precipProbability,
+                dailyPrecipType: body.daily.data[0].precipType,
+                dailyTemperatureHigh: body.daily.data[0].temperatureHigh,
+                dailyTemperatureLow: body.daily.data[0].temperatureLow
+            })
         }
     })
 }
